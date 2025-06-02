@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Objetos preciosos… y tú</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #eef2f3, #ffffff);
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    .mine {
+      width: 220px;
+      transition: opacity 0.5s ease;
+    }
+
+    .pickaxe {
+      font-size: 80px;
+      animation: swing 1s infinite;
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    @keyframes swing {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-25deg); }
+      75% { transform: rotate(25deg); }
+    }
+
+    #btn {
+      margin-top: 30px;
+      padding: 15px 35px;
+      font-size: 18px;
+      background-color: gold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.1s;
+    }
+
+    #btn:active {
+      transform: scale(0.97);
+    }
+
+    #reaction {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
+    }
+
+    #treasure {
+      margin-top: 40px;
+      display: none;
+      max-width: 95%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Imagen de la mina -->
+  <img id="mine" class="mine" src="mina.png" alt="Mina cerrada">
+
+  <!-- Botón y pico -->
+  <div>
+    <button id="btn" onclick="revealTreasure()">Objetos preciosos… y tú</button>
+    <span class="pickaxe">⛏️</span>
+  </div>
+
+  <div id="reaction"></div>
+
+  <!-- Imagen de la carta (tesoro) -->
+  <img id="treasure" src="carta.png" alt="Carta para Nicole" />
+
+  <script>
+    function revealTreasure() {
+      const mine = document.getElementById('mine');
+      const treasure = document.getElementById('treasure');
+      const reaction = document.getElementById('reaction');
+
+      // Efecto de mina rompiéndose
+      mine.style.opacity = 0;
+      reaction.textContent = "¡Has abierto la mina! Mira lo que hay dentro...";
+
+      setTimeout(() => {
+        mine.style.display = 'none';
+        treasure.style.display = 'block';
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
